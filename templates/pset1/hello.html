@@ -1,0 +1,291 @@
+---
+layout: header
+title: hello
+permalink: /weeks/pset1/hello/
+---
+
+<div class="toc2 toc-left">
+            <div id="content">
+                <h1>Hello (Привет)</h1>
+<div class="sect1">
+<h2 id="tl-dr"><a class="link" href="#tl-dr">Список файлов</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Привет, мир! <a href="">Здесь</a>, в текстовом редакторе, находится наша самая первая программа, которую мы написали на языке Cи. Ее код благополучно расположился внутри файла <code>hello.c</code>.</p>
+</div>
+<div class="paragraph">
+<p>Нажмите на значок папки, и вы увидите, что на данный момент в ней находится только один файл и это наш файл <code>hello.c</code>. Повторное нажатие на значок папки скроет боковую панель демонстрирующую содержимое папки.</p>
+</div>
+<div class="paragraph">
+<p>Затем, в окне терминала, справа от знака доллара ($), также известного как «приглашение командной строки», напишите:</p>
+</div>
+<div class="listingblock">
+    <div class="content">
+      <pre class="pygments highlight"><code> ls</code></pre>
+    </div>
+</div>
+<div class="paragraph">
+<p>нажмите Enter – в терминале выведется текст <code>hello.c</code>. Таким образом вы опять просмотрели содержимое папки, но на этот раз, используя интерфейс командной строки (CLI, Command line interface), а не графического интерфейс пользователя (GUI, graphical user interface), представляемого значком папки. Вы запустили (т.е. выполнили) команду <code>ls</code>, которая является сокращением от «list» (список). Это часто используемая команда и поэтому авторы, дабы защитить нас от лишней писанины, назвали ее просто <code>ls</code>. Умно, не так ли?</p>
+</div>
+<div class="paragraph">
+<p>Отныне выполнение (т.е. запуск) команды будет означать следующие два действия: ввод данной команды в окно терминала и последующее нажатие кнопки Enter. Команды «чувствительны к регистру», поэтому не вводите их в верхнем регистре, если вы планировали строчные символы или наоборот.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="specification"><a class="link" href="#specification">Компиляция Программ</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Теперь, прежде чем мы запустим прописанную в редакторе кода программу, напомним, что мы должны ее сперва скомпилировать, используя компилятор (т.е. <code>clang</code>), (компиляция – это перевод программы из исходного кода в машинный код (т. е. нули и единицы). Данная команда запустит этот процесс:</p>
+</div>
+<div class="listingblock">
+    <div class="content">
+      <pre class="pygments highlight">
+        <code data-lang="c">$ clang hello.c
+      </code></pre>
+    </div>
+</div>
+<div class="paragraph">
+<p>Затем снова выполните уже знакомую нам команду:</p>
+</div>
+<div class="listingblock">
+    <div class="content">
+      <pre class="pygments highlight"><code>$ ls</code></pre>
+    </div>
+</div>
+<div class="paragraph">
+<p> На этот раз вы должны увидеть не только <code>hello.c</code>, но и <code>a.out</code>. (Вы можете увидеть эту же организацию файлов в графическом представлении, если щелкните по значку полюбившейся нам папки). Все это потому, что clang перевел исходный код содержащийся в <code>hello.c</code> в машинный код, далее помещая его в <code>a.out</code> – название данного файла является сокращением от “assembler output”, но об этом мы поговорим как-нибудь в следующий раз.</p>
+</div>
+<div class="paragraph">
+<p>Теперь запустите программу, выполнив следующую команду:</p>
+</div>
+<div class="listingblock">
+    <div class="content">
+      <pre class="pygments highlight"><code>./a.out</code></pre>
+    </div>
+</div>
+<div class="paragraph">
+<p>Да, действительно, приветствуем тебя, Мир!) </p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="specification"><a class="link" href="#specification">Именование Программ</a></h2>
+<div class="sectionbody">
+  <div class="paragraph">
+  <p>Итак, <code>a.out</code> - не самое понятное название для программы. Давайте еще раз скомпилируем <code>hello.c</code>, но на этот раз сохраним файл машинного кода дав ему более подходящее название, к примеру <code>hello</code>. Выполните следующую команду:</p>
+  </div>
+  <div class="listingblock">
+    <div class="content">
+      <pre class="pygments highlight"><code>clang -o hello hello.c</code></pre>
+    </div>
+  </div>
+  <div class="paragraph">
+  <p>Будьте внимательны, когда будете прописывать пробелы между аргументами командной строки, так как их часто пропускают или не там ставят! Затем повторно выполните:</p>
+  </div>
+  <div class="listingblock">
+    <div class="content">
+      <pre class="pygments highlight"><code>ls</code></pre>
+    </div>
+  </div>
+   <div class="paragraph">
+  <p>Вы увидите не только файлы <code>hello.c</code> и <<code>a.out</code>, но также и <code>hello</code>. Это потому что 
+сочетание символов “<code>-o</code>“ представляет из себя аргумент командной строки, который более известен как флажок или переключатель, который говорит <code>clang’у<code> в результате своей работы вывести/произвести (сокращение от <code>output</code> – вывод) файл с именем <code>hello</code>. Выполните следующие действия, чтобы запустить по-новому названную программу:
+  </p>
+  </div>
+  <div class="listingblock">
+    <div class="content">
+      <pre class="pygments highlight"><code>./hello</code></pre>
+    </div>
+  </div>
+   <div class="paragraph">
+  <p>И снова здравствуйте!</p>
+  </div>
+   <div class="paragraph">
+  <p></p>
+  </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="specification"><a class="link" href="#specification">Упрощение работы</a></h2>
+<div class="sectionbody">
+   <div class="paragraph">
+  <p>Напомним, что мы можем автоматизировать процесс выполнения <code>clang</code>, опиревшись на крепкие “плечи” благородной утилиты <code>make</code>, тем самым экономя энергию, которая могла бы быть безвозвратно потрачена на механические манипуляции нашей и без того многострадальной клавиатуры (меньше кнопок на клавиатуре придется нажимать). Запустите следующую команду, чтобы наконец в последний раз скомпилировать эту программу:</p>
+  </div>
+  <div class="listingblock">
+    <div class="content">
+      <pre class="pygments highlight"><code>make hello</code></pre>
+    </div>
+  </div>
+   <div class="paragraph">
+  <p>Вы увидите, что <code>make</code> запускает <code>clang</code> с еще большим количеством аргументов командной строки. Об этом тоже поговорим в другой раз!</p>
+  </div>
+   <div class="paragraph">
+      <p>И, также в последний раз, запустите по-новому скомпилированную hello-программу:</p>
+  </div>
+  <div class="listingblock">
+    <div class="content">
+      <pre class="pygments highlight"><code>./hello</code></pre>
+    </div>
+  </div>
+   <div class="paragraph">
+  <p>Фух!</p>
+  </div>
+</div>
+</div>  
+<div class="sect1">
+<h2 id="specification"><a class="link" href="#specification">Получение пользовательского ввода</a></h2>
+<div class="sectionbody">
+  <div class="paragraph">
+  <p>Достаточно сказать, что независимо от того, как вы компилируете или запускаете данную  программу, она всегда будет выводить только один текст и это: <code>hello, world</code>. Давайте немного персонализируем  ее (заточим под конкретную личность), как мы это делали ранее на лекции.
+</p>
+  </div>
+  <div class="paragraph">
+  <p>Измените эту программу таким образом , чтобы она сначала запрашивала у пользователя его имя, а затем выводила бы <code>hello, такой-то_такой-то</code>, где вместо <code>такой-то_такой-то</code> выведется имя, которое ввел пользователь.
+  </p>
+  </div>
+  <div class="paragraph">
+  <p>Как и обговаривалось ранее, не забудьте обязательно скомпилировть вашу программу, используя:
+  </p>
+  </div>
+  <div class="listingblock">
+    <div class="content">
+      <pre class="pygments highlight"><code>make hello</code></pre>
+    </div>
+  </div>
+  <div class="paragraph">
+  <p>И обязательно запустите свою программу, протестировав ее несколько раз с разными входными данными. Программа запускается следующим образом:
+  </p>
+  </div>
+  <div class="listingblock">
+  <div class="content">
+    <pre class="pygments highlight"><code>./hello</code></pre>
+  </div>
+  </div>
+</div>
+</div>
+<div class="sect1"> 
+<h2 id="specification"><a class="link" href="#specification">Наше решение</a></h2>
+<div class="sectionbody">
+  <div class="paragraph">
+  <p>Чтобы опробовать нашу имплементацию данной программы, запустите команду:
+  </p>
+  </div>
+  <div class="listingblock">
+    <div class="content">
+      <pre class="pygments highlight"><code>./hello</code></pre>
+    </div>
+   </div> 
+   <div class="paragraph">
+  <p>в данной среде разработки <a href="">sandbox</a> .
+  </p>
+  </div>
+</div>
+</div> 
+<div class="sect1">
+<h2 id="walkthrough"><a class="link" href="#walkthrough">Прохождение</a></h2>
+<div class="sectionbody">
+<div class="videoblock">
+<div class="content">
+<div class="row">
+    <div class="col-md-12"><iframe width="100%" height="540" src="https://youtu.be/uYDPEkCDuaw" frameborder="0" allowfullscreen></iframe></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="specification"><a class="link" href="#specification">Рекомендации</a></h2>
+<div class="sectionbody">
+  <div class="paragraph">
+  <p>
+    <strong>Не помните, как запросить у пользователя его имя?</strong>
+  </p>
+  </div>
+  <div class="paragraph">
+  <p>Напомним, вы можете использовать <code>get_string</code>, чтобы сохранить значение в переменной типа <code>string</code> под названием <code>name</code>.
+  </p>
+  </div>
+  <div class="listingblock">
+    <div class="content">
+      <pre class="pygments highlight"><code>string name = get_string(<span class="red">"What is your name?\n"<span class="red">);</code></pre>
+    </div>
+   </div> 
+  <div class="paragraph">
+  <p><strong>Не помните, как отформатировать строку?</strong>
+  </p>
+  </div>
+  <div class="paragraph">
+  <p>Не помните, как соединить имя пользователя с приветствием? Напомним, что вы можете использовать <code>printf</code> не только для вывода информации в терминальное окно, но и для форматирования строки (отсюда и <code>f</code> в названии функции <code>printf</code>, т.е. format/форматирование ).
+  </p>
+  </div>
+  <div class="listingblock">
+    <div class="content">
+      <pre class="pygments highlight"><code>printf(<span class="red">"hello, %s\n"</span>, name);</code></pre>--------------------
+    </div>
+   </div> 
+  <div class="paragraph">
+  <p><strong>Использование необъявленного идентификатора?</strong>
+  </p>
+  </div>
+  <div class="paragraph">
+  <p>Возможно вы увидите такую ошибку (в самом верху, над всеми остальными ошибками)?
+  </p>
+  </div>
+  <div class="listingblock">
+    <div class="content">
+      <pre class="pygments highlight"><code>error: use of undeclared identifier 'string'; did you mean 'stdin'?</code></pre>
+    </div>
+   </div> 
+  <div class="paragraph">
+  <p>Напомним, чтобы иметь возможность пользоваться функцией <code>get_string</code>, вам необходимо прописать подключение библиотеки <code>cs50.h</code> (в которой объявлена функция <code>get_string</code>) в верхней строке вашего файла:
+  </p>
+  </div>
+  <div class="listingblock">
+    <div class="content">
+      <pre class="pygments highlight"><code>#include <cs50.h></code></pre>
+    </div>
+   </div> 
+</div>
+</div>
+<div class="sect1">
+<h2 id="specification"><a class="link" href="#specification">Как проверить ваш код</a></h2>
+<div class="sectionbody">
+  <div class="paragraph">
+  <p>
+    Выполните следующие команды, дабы оценить правильность вашего кода, путем задействования инструмента <code>check50</code>. Но это не значит, что вы сами не должны проверять работу вашей программы!
+  </p>
+  </div>
+    <div class="listingblock">
+    <div class="content">
+      <pre class="pygments highlight"><code>check50 cs50/problems/2019/fall/hello</code></pre>
+    </div>
+   </div> 
+  <div class="paragraph">
+  <p>Выполните следующую команду, чтобы оценить стиль вашего кода с помощью <code>style50</code>.
+  </p>
+   </div> 
+   <div class="listingblock">
+    <div class="content">
+      <pre class="pygments highlight"><code>style50 hello.c </code></pre>
+    </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="specification"><a class="link" href="#specification">Как отправить решение</a></h2>
+<div class="sectionbody">
+  <div class="paragraph">
+  <p>
+    Выполните приводимую ниже команду, вводя учетные данные Github-аккаунта (имя пользователя и пароль), при появлении соответствующего запроса. При вводе пароля, для обеспечения безопасности, вы будете видеть звездочки (<code>*</code>) вместо вводимых вами символов.
+  </p>
+  </div>
+  <div class="listingblock">
+    <div class="content">
+      <pre class="pygments highlight"><code>submit50 cs50/problems/2019/fall/hello</code></pre>
+    </div>
+</div>
+</div>
+
+            </div>
+        </div>
+
